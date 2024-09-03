@@ -1,0 +1,93 @@
+INSERT INTO cars(brand, model, year) VALUES('ford','Mustang', 1964);
+INSERT INTO cars(brand, model, year) 
+VALUES
+('Volvo', 'p1800', 1968),
+('BMW', 'M1', 1978),
+('Toyota', 'Celica', 1975);
+
+SELECT * FROM cars;
+SELECT brand, model FROM cars;
+
+The ALTER TABLE statement is used to add, delete, 
+or modify columns in an existing table.
+
+\dt-display tables
+
+The ALTER TABLE statement is also used to add and drop 
+various constraints on an existing table.
+ALTER TABLE cars
+ADD color VARCHAR(255);
+
+UPDATE cars
+SET color = 'red'
+WHERE brand = 'Volvo';
+Be careful when updating records. If you omit the WHERE clause, 
+ALL records will be updated!
+
+UPDATE cars
+SET color = 'white', year = 1970
+WHERE brand = 'Toyota';
+
+ALTER TABLE cars
+ALTER COLUMN year TYPE VARCHAR(4);
+Some data types cannot be converted if the column has value. 
+E.g. numbers can always be converted to text, but text cannot 
+always be converted to numbers.
+
+ALTER TABLE cars
+DROP COLUMN color;
+
+DELETE FROM cars
+WHERE brand = 'Volvo';
+
+DELETE FROM cars;
+
+SELECT * FROM cars
+WHERE model LIKE 'M%';
+
+ILIKE is case insestive
+WHERE model ILIKE 'm%';
+
+SELECT * FROM cars
+WHERE model = 'Ford' AND year = '1975';
+
+SELECT * FROM cars
+WHERE model = 'Ford' OR year = '1975';
+
+SELECT * FROM cars
+WHERE year BETWEEN 1970 AND 1980;
+
+SELECT * FROM cars
+WHERE model = NULL;
+
+SELECT * FROM cars
+WHERE model IS NOT NULL;
+
+SELECT DISTINCT country FROM customers;
+SELECT COUNT(DISTINCT country) FROM customers;
+
+SELECT * FROM products
+ORDER BY price;
+
+SELECT * FROM customers
+LIMIT 20;
+
+SELECT * FROM customers
+LIMIT 20 OFFSET 40
+//start at 41
+
+SELECT MIN(price)
+FROM products;
+
+SELECT MAX(price)
+FROM products;
+
+SELECT MIN(price) AS lowest_price FROM products;
+SELECT MAX(price) AS highest_price FROM products;
+
+SELECT COUNT(customer_id)
+FROM customer_id;
+
+SELECT COUNT(customer_id)
+FROM customers
+WHERE city = 'London';
