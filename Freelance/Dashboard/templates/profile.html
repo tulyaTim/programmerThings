@@ -1,0 +1,6 @@
+{% extends 'master.html' %} {% block content %}
+<form class="" method="post" enctype="multipart/form-data">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit" name="button">save</button>
+</form>
+{% endblock %}

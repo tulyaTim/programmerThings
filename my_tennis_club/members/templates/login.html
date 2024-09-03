@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+{% block title %}Signup{% endblock %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>Username:</p>
+        {{ form.username }}
+
+        <p>password:</p>
+        {{ form.password }}
+        <button>Submit</button>
+    </form>
+
+    {% if form.errors or form.non_field_errors %}
+        {% for x in form %}
+            {{ x.errors }}
+        {% endfor %}
+    {% endif %}
+{% endblock %}

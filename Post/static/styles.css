@@ -1,0 +1,107 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Community Page */
+.community-page {
+    width: 80%;
+    margin: 20px auto;
+}
+
+/* Post Container */
+.post {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin: auto;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 60%;
+}
+
+/* User Info */
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.user-info img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.user-info span {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Post Content */
+.post-content {
+    margin-bottom: 10px;
+}
+
+.post-content p {
+    margin-bottom: 10px;
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Post Actions */
+.post-actions {
+    display: flex;
+    align-items: center;
+}
+
+.post-actions form {
+    display: inline;
+    margin-right: 10px;
+}
+
+.post-actions .btn-like,
+.post-actions .btn-comment,
+.post-actions .btn-inbox,
+.post-actions .btn-share {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.post-actions .btn-like:hover,
+.post-actions .btn-comment:hover,
+.post-actions .btn-inbox:hover,
+.post-actions .btn-share:hover {
+    background-color: #0056b3;
+}
+
+.post-actions span {
+    margin-left: 5px;
+    font-weight: bold;
+    color: #555;
+}

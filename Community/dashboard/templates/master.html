@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to MyProject</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <script type="text/javascript" src="{% static 'js\script.js' %}"></script>
+</head>
+<body>
+  <div class="index-page">
+      <ul>
+
+          {% if user.is_authenticated %}
+            {% for userprofile in userprofiles %}
+              {% if userprofile.name == request.user %}
+                <div class="user-info">
+                  <img src="{{ userprofile.profile_pic.url }}" alt="{{ userprofile.username }}">
+                  <span>{{ userprofile.username }}</span>
+                </div>
+              {% else %}
+                <a href="{% url 'dashboard:create_profile' %}">Create Profile</a>
+              {% endif %}
+            {% endfor %}
+            <li><a href="/">Home</a></li>
+            <li><a href="">Inbox</a></li>
+            <li><a href={% url 'dashboard:logout' %}>logout</a></li>
+          {% else %}
+            <li><a href="/">Home</a></li>
+            <li><a href={% url 'dashboard:login' %}>login</a></li>
+            <li><a href={% url 'dashboard:signup' %}>Signup</a></li>
+          {% endif %}
+      </ul>
+  </div>
+
+  {% block content %}
+  {% endblock %}
+</body>
+</html>

@@ -1,0 +1,14 @@
+{% extends 'master.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+    {% for x in fruits %}
+        <!-- <h1>{{ forloop.counter }}</h1> -->
+    
+        <!-- <h1>{{ forloop.counter0 }}</h1> -->
+    
+        <h1 {% if forloop.last %} style='background-color:lightblue;' {% endif %}>{{ x }}</h1>
+    
+    {% endfor %}
+{% endblock %}

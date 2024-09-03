@@ -1,0 +1,18 @@
+{% extends 'master.html' %}
+{% block content %}
+  <h2>Conversation with
+    {% for participant in conversation.participants.all %}
+      {{ participant.username }}{% if not forloop.last %}, {% endif %}
+    {% endfor %}
+  </h2>
+  <div class="">
+    {% for message in messages %}
+      <p><strong>{{ message.sender.username }}:</strong>{{ message.content }}</p>
+    {% endfor %}
+  </div>
+  <form class="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" name="button">Send</button>
+  </form>
+{% endblock %}

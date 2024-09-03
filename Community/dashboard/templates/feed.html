@@ -1,0 +1,19 @@
+{% extends 'master.html' %}
+{% block content %}
+
+  <div class="feed-page">
+      {% for post in posts %}
+      <div class="post">
+          <div class="user-info">
+              <img src="{{ post.user.profile_pic.url }}" alt="{{ post.user.name }}">
+              <span>{{ post.user.name }}</span>
+          </div>
+          <p>{{ post.content }}</p>
+          {% if post.image %}
+          <img src="{{ post.image.url }}" alt="Post Image">
+          {% endif %}
+      </div>
+      {% endfor %}
+  </div>
+
+{% endblock %}

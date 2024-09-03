@@ -1,0 +1,15 @@
+{% extends 'master.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="form-container">
+        <h2>Create_profile</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Save</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

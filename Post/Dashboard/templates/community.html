@@ -1,0 +1,35 @@
+{% extends 'master.html' %} {% block content %}
+
+<div class="community-page">
+  <a href="{% url 'dashboard:add_post' %}">Add Post</a>
+  {% for post in posts %}
+  <div class="post">
+    <div class="user-info">
+      <img
+        src="{{ post.user.userprofile.profile_pic.url }}"
+        alt="{{ post.user.userprofile.username }}"
+      />
+      <span>{{ post.user.userprofile.username }}</span>
+    </div>
+    <div class="post-content">
+      <p>{{ post.content }}</p>
+      {% if post.image %}
+      <img src="{{ post.image.url }}" alt="Post Image" />
+      {% endif %}
+    </div>
+    <div class="post-actions">
+      <form action="#" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="post_id" value="{{ post.id }}" />
+        <button type="submit" class="btn-like">Like</button>
+      </form>
+      <span>{{ post.like_count }}</span>
+      <button class="btn-comment">Comment</button>
+      <button class="btn-inbox">Inbox</button>
+      <button class="btn-share">Share</button>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

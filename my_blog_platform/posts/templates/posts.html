@@ -1,0 +1,7 @@
+{% extends 'master.html' %}
+{% block content %}
+  {% for post in posts %}
+    <h1>{{ post.post_author }}<h1>
+    <h4>{{ post.about_post }}</h4>
+  {% endfor %}
+{% endblock %}

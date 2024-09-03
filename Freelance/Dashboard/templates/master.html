@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <script type="text/javascript" src="{% static 'app.js' %}">
+
+    </script>
+  </head>
+  <body>
+    <div class="header-container">
+      <ul>
+        {% if user.is_authenticated %}
+        
+          {% if user.userprofile %}
+          <li> 
+            <a href="{% url 'dashboard:details' user.userprofile.id %}">
+              <div class="user-info">
+                {% if user.userprofile.profile_pic %}
+                <img src="{{ user.userprofile.profile_pic.url }}" alt="{{ user.username }}"></img>
+                {% endif %}
+                <span>{{ user.userprofile.username }}</span>
+              </div>
+            </a>
+          </li>
+          
+          {% else %}
+            <li><a href="{% url 'dashboard:create'  %}">Create Profile</a></li>
+          {% endif %}
+          <li><a href="/">Home</a></li>
+          <li><a href="">Inbox</a></li>
+          <li><a href={% url 'dashboard:logout' %}>logout</a></li>
+        {% else %}
+          <li><a href="/">Home</a></li>
+          <li><a id="open-popup">login</a></li>
+          <li><a id="open-signup-popup">Signup</a></li>
+
+        {% endif %}
+        </ul>
+    </div>
+    
+    <!--LOGIN FORM-->
+    <div id="popup" class="modal">
+      <div class="modal-content">
+          <span id="close-popup" class="close">&times;</span>
+          <div class="container">
+            <div class="form-container">
+              <h2>Login</h2>
+              <form method="post" action={% url 'dashboard:login' %}>
+                {% csrf_token %} {{ form.as_p }}
+                <button type="submit" class="btn">Login</button>
+              </form>
+              <p>
+                Don't have an account?
+                <a href="{% url 'dashboard:signup' %}">Sign up here</a>
+              </p>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <!--SIGNUP FORM-->
+    <div id="signup-popup" class="modal">
+      <div class="modal-content">
+          <span id="close-signup-popup" class="close">&times;</span>
+          <div class="container">
+            <div class="form-container">
+              <h2>Signup</h2>
+              <form method="post" action={% url 'dashboard:signup' %}>
+                {% csrf_token %} {{ signup_form.as_p }}
+                <button type="submit" class="btn">Signup</button>
+              </form>
+              <p>
+                Alraedy have an account?
+                <a href="{% url 'dashboard:login' %}">Login here</a>
+              </p>
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+    {% block content %}
+      
+    {% endblock %}
+  </body>
+</html>

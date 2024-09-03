@@ -1,0 +1,13 @@
+<html>
+  <head></head>
+  <body>
+    <a href="/">Home</a>
+    {% if user.is_authenticated %}
+    <a href="{% url 'Dashboard:profile' %}">Profile</a>
+    <a href="{% url 'Dashboard:logout' %}">Logout</a>
+    {% else %}
+    <a href="{% url 'Dashboard:login' %}">Login</a>
+    <a href="{% url 'Dashboard:signup' %}">Signup</a>
+    {% endif %} {% block content %} {% endblock %}
+  </body>
+</html>

@@ -1,0 +1,181 @@
+/* community/static/css/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.index-page {
+    text-align: center;
+    padding: 50px;
+}
+
+.index-page h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.index-page p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.index-page ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.index-page li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.index-page a {
+    text-decoration: none;
+    font-size: 1.2em;
+    color: #333;
+    transition: color 0.3s;
+}
+
+.index-page a:hover {
+    color: #007BFF;
+}
+
+.community-page, .feed-page, .message-page, .muse-page {
+    padding: 20px;
+}
+
+.post, .message {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 60%;
+    margin: auto;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.post-content {
+    display: flex;
+    flex-direction: column;
+    max-width: calc(100% - 70px); /* Adjust based on the size of user-info */
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.user-info img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.post-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.post-actions button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.post-actions button:hover {
+    background-color: #0056b3;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.form-container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form p {
+    margin-bottom: 15px;
+}
+
+form ul li:first-child, form ul li:nth-child(3){
+  display: none;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

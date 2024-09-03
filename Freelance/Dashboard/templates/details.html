@@ -1,0 +1,11 @@
+{% extends 'master.html' %} {% block content %}
+<div class="user-info">
+  {% if userprofile.profile_pic %}
+  <img src="{{ userprofile.profile_pic.url }}" />
+  <span>{{ userprofile.username }}</span>
+  {% endif %}
+</div>
+
+<a href="{% url 'dashboard:edit' userprofile.id %}">Edit Profile</a>
+
+{% endblock %}

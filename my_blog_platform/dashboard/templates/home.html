@@ -1,0 +1,9 @@
+{% extends 'master.html' %}
+{% block content %}
+  <a href="{% url 'dashboard:add_contact' %}">Add Contact</a>
+
+<h1>Contacts</h1>
+  {% for contact in contacts %}
+    <a href="{% url 'dashboard:contact_details' contact.id %}"><p>{{ contact.Name }}</p></a>
+  {% endfor %}
+{% endblock %}
