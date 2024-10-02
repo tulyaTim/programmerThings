@@ -1,0 +1,10 @@
+{% extends 'master.html' %} {% block content %}
+<div class="mycard">
+  <h1>Team</h1>
+  <ul>
+    {% for member in members %}
+    <li onclick="">{{ member.first_name }} {{ member.last_name }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

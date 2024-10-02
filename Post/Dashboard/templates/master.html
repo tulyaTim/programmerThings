@@ -7,6 +7,30 @@
     <link rel="stylesheet" href="{% static 'styles.css' %}">
   </head>
   <body>
+    <ul>
+      {% comment %} profile picture {% endcomment %}
+        <div class="user-info">
+          <li>
+          {% if user.userprofile.profile_pic %}
+            <img
+              src="{{ user.userprofile.profile_pic.url }}"
+              alt="{{ user.username }}"
+            />
+          {% endif %}
+        </li>
+        </div>
+      
+
+      <li><a href="/">HOME</a></li>
+      {% if user.is_authenticated %}
+        
+        <li><a href="{% url 'dashboard:logout' %}">LOGOUT</a></li>
+      {% else %}
+        <li><a href="{% url 'dashboard:login' %}">LOGIN</a></li>
+        <li><a href="{% url 'dashboard:signup' %}">JOIN</a></li>
+      {% endif %}
+    </ul>
+    <hr></hr>
     {% block content %}
 
     {% endblock %}
