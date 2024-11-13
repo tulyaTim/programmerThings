@@ -1,0 +1,10 @@
+{% extends 'chat/master.html' %}
+{% block title %}Signup{% endblock %}
+{% block content %}
+    <h1>Signup</h1>
+    <form method="post">
+      {% csrf_token %}
+      {{ form }}
+      <button type="submit">Signup</button>
+    </form>
+{% endblock %}

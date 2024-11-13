@@ -1,0 +1,20 @@
+{% extends 'master.html' %}
+{% block content %}
+    
+        <div class="inbox-list">
+          <h2>Inbox</h2>
+          <hr></hr>
+          <ul>
+            {% for user in users %}
+              <li class="message-preview active">
+                {% if user == request.user %}
+                  <a href="{% url 'chat:chat_view' user.id %}" class="sender">{{ user.username|capfirst }}(Me)</a>
+                {% else %}
+                  <a href="{% url 'chat:chat_view' user.id %}" class="sender">{{ user.username|capfirst }}</a>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+{% endblock %}

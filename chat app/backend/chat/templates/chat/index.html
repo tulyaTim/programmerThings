@@ -1,0 +1,17 @@
+{% extends 'chat/master.html' %}
+{% block content %}
+    <h1>Home</h1>
+    
+        <div class="inbox-list">
+          <h2>Inbox</h2>
+          <hr></hr>
+          <ul>
+            {% for user in users %}
+            <li class="message-preview active">
+              <a href="{% url 'chat_view' user.id %}" class="sender">{{ user.username }}</a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+{% endblock %}

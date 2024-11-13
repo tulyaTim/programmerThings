@@ -1,0 +1,33 @@
+{% extends 'chat/master.html' %}
+{% block content %}
+
+<div class="main">
+
+        <div class="inbox-container">
+          <h2>Chat with {{ recipient.username | capfirst }}</h2>
+          {% for message in messages %}
+            {% if message.sender == request.user %}
+              <p class="message sent">
+                <strong>{{ message.content | capfirst }}:</strong>
+                <small>{{ message.timestamp.time }}</small>
+              </p>
+
+            {% else %}
+            <p class="message received">
+              <strong>{{ message.content | capfirst }}:</strong>
+              <small>{{ message.timestamp.time }}</small>
+            </p>
+            {% endif %}
+            {% endfor %}
+            <form method="post" action="{% url 'chat_view' recipient.id %}">
+                {% csrf_token %}
+                {{ form }}
+                <button type="submit" class="msg-btn">Send</button>
+            </form>
+        </div>
+
+  </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'master.html' %}
+{% block title %}Signup{% endblock %}
+{% block content %}
+
+  <div class="form-container">
+    <h1>Signup</h1>
+    <form method="post">
+      {% csrf_token %}
+      <div class="username">
+        <label for="username">Username:</label>{{ form.username }}
+      </div>
+      
+      <div class="password1">
+        <label for="id_password1">Password:</label>{{ form.password1 }}
+      </div>
+
+      <div class="password2">
+        <label for="id_password2">Password</label>{{ form.password2 }}
+        <small>{{ form.password2.help_text }}</small>
+      </div>
+      
+      <div class="btn-container">
+        <button type="submit" class="msg-btn">Signup</button>
+      </div>
+    </form>
+  </div>
+    
+{% endblock %}

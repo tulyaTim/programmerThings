@@ -1,0 +1,79 @@
+{% extends 'master.html' %}
+{% block content %}
+<div class="user-info">
+  <ul>
+    <li>
+      <a href="#">
+        {% if userprofile.profile_pic %}
+          <img
+            src="{{ userprofile.profile_pic.url }}"
+            alt="{{ userprofile.user.username }}"
+          />
+        {% endif %}
+      </a>
+
+  </li>
+  <li>{{ userprofile.user.username|capfirst }}</li>
+  </ul>
+
+  {% if userprofile.user.username == user.username %}
+    <a href="{% url 'accounts:edit_profile' %}">Edit Profile</a>
+  {% endif %}
+
+</div>
+
+  <span class="user-info">
+    {{ userprofile.bio }}
+  </span>
+
+  <hr></hr>
+
+    <h1>POSTS</h1>
+
+
+
+    {% for post in posts %}
+      {% if userprofile.user.username == post.user.username %}
+
+      <div class="community-page">
+
+      <div class="post">
+
+        <a href="{% url 'accounts:profile' post.user.id %}">
+          <div class="user-info">
+              {% if post.user.userprofile.profile_pic %}
+              <img
+                src="{{ post.user.userprofile.profile_pic.url }}"
+                alt="{{ post.user.username }}"
+              />
+              {% endif %}
+            <span>{{ post.user.username|capfirst }}</span>
+          </div>
+        </a>
+
+          <div class="post-content">
+            <p>{{ post.content }}</p>
+            {% if post.image %}
+            <img src="{{ post.image.url }}" alt="Post Image" />
+            {% endif %}
+          </div>
+
+          <div class="post-actions">
+            <form action="#" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="post_id" value="{{ post.id }}" />
+              <button type="submit" class="btn-like">Like</button>
+            </form>
+            <span>{{ post.like_count }}</span>
+            <button class="btn-comment">Comment</button>
+            <button class="btn-inbox">Inbox</button>
+            <button class="btn-share">Share</button>
+          </div>
+
+        </div>
+      </div>
+
+      {% endif %}
+    {% endfor %}
+
+{% endblock %}

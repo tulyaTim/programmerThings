@@ -9,25 +9,31 @@
   <body>
     <ul>
       {% comment %} profile picture {% endcomment %}
+       {% if user.is_authenticated %}
         <div class="user-info">
           <li>
-          {% if user.userprofile.profile_pic %}
-            <img
-              src="{{ user.userprofile.profile_pic.url }}"
-              alt="{{ user.username }}"
-            />
-          {% endif %}
+            <a href="{% url 'accounts:profile' user.id %}">
+              {% if user.userprofile.profile_pic %}
+                <img
+                  src="{{ user.userprofile.profile_pic.url }}"
+                  alt="{{ user.username }}"
+                />
+              {% endif %}
+            </a>
+          
         </li>
         </div>
+        {% endif %}
       
 
       <li><a href="/">HOME</a></li>
       {% if user.is_authenticated %}
-        
-        <li><a href="{% url 'dashboard:logout' %}">LOGOUT</a></li>
+        <li><a href="{% url 'chat:index' %}">INBOX</a></li>
+        {% comment %} <li><a href="{% url 'dashboard:profile' user.id %}">PROFILE</a></li> {% endcomment %}
+        <li><a href="{% url 'accounts:logout' %}">LOGOUT</a></li>        
       {% else %}
-        <li><a href="{% url 'dashboard:login' %}">LOGIN</a></li>
-        <li><a href="{% url 'dashboard:signup' %}">JOIN</a></li>
+        <li><a href="{% url 'accounts:login' %}">LOGIN</a></li>
+        <li><a href="{% url 'accounts:signup' %}">JOIN</a></li>
       {% endif %}
     </ul>
     <hr></hr>

@@ -1,24 +1,31 @@
-{% extends 'master.html' %} {% block content %}
+{% extends 'master.html' %} 
+
+{% block content %}
 
 <div class="community-page">
   <a href="{% url 'dashboard:add_post' %}">Add Post</a>
   {% for post in posts %}
   <div class="post">
+
+  <a href="{% url 'accounts:profile' post.user.id %}">
     <div class="user-info">
-      {% if post.user.userprofile.profile_pic %}
+        {% if post.user.userprofile.profile_pic %}
         <img
           src="{{ post.user.userprofile.profile_pic.url }}"
           alt="{{ post.user.username }}"
         />
-      {% endif %}
-      <span>{{ post.user.username }}</span>
+        {% endif %}
+      <span>{{ post.user.username|capfirst }}</span>
     </div>
+  </a>
+
     <div class="post-content">
       <p>{{ post.content }}</p>
       {% if post.image %}
       <img src="{{ post.image.url }}" alt="Post Image" />
       {% endif %}
     </div>
+
     <div class="post-actions">
       <form action="#" method="post">
         {% csrf_token %}
@@ -30,6 +37,7 @@
       <button class="btn-inbox">Inbox</button>
       <button class="btn-share">Share</button>
     </div>
+    
   </div>
   {% endfor %}
 </div>
