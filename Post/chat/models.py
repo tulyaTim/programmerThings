@@ -15,3 +15,9 @@ class Message(models.Model):
 
     def __str__(self):
         return f"From {self.sender} to {self.receiver} at {self.timestamp}"
+    
+class Contact(models.Model):
+    username = models.CharField(max_length=20, unique=True)
+
+    def __str__(self):
+        return self.username

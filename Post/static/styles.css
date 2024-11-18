@@ -211,17 +211,13 @@ a {
     border-bottom-left-radius: 0;
 }
 
-.inbox-container form .msg-btn:hover, .form-container form .msg-btn:hover {
-    background-color: blue;
-}
-
 .inbox-list {
     width: 30%;
     border-right: 1px solid #ccc;
     border-radius: 10px;
     padding: 16px;
     background-color: #f9f9fc;
-    margin: auto;
+    margin: 0 auto 10px auto;
     text-align: center;
     overflow-y: scroll;
 }

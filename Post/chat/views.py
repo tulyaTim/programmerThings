@@ -4,7 +4,7 @@ from django.views.decorators.http import require_http_methods
 from django.contrib.auth.decorators import login_required
 from .models import Message
 from django.contrib.auth.models import User
-from .forms import MessageForm
+from .forms import MessageForm, ContactForm
 from django.db import models
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout
@@ -13,7 +13,19 @@ from django.contrib.auth import login, logout
 
 def index(request):
     users = User.objects.all()
-    return render(request, 'index.html', {'users': users})
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            username = form.data['username']
+            password = "Aahebwa#24"
+            contact, create_contact = User.objects.get_or_create(username=username, password=password)
+    else:
+        form = ContactForm()
+    context = {
+        'form': form,
+        'users': users,
+    }
+    return render(request, 'index.html', context)
 
 
 @login_required
@@ -45,5 +57,3 @@ def chat_view(request, user_id):
         'form': form,
     }
     return render(request, 'chat.html', context)
-
-
